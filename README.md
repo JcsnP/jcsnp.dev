@@ -1,4 +1,4 @@
-# jcsnp.xyz
+# jcsnp.dev
 
 The personal portfolio of Chitsanupong Paenyoi (`jcsnp`) and a directory of mobile applications with links to their independent websites and store listings. The site is statically generated for GitHub Pages.
 
