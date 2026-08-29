@@ -25,9 +25,9 @@ const description = `Portfolio, applications, and official links from ${siteConf
             </p>
         </header>
 
-        <section class="mt-12" aria-labelledby="site-links">
+        <section class="mt-12" aria-labelledby="explore-links">
             <h2
-                id="site-links"
+                id="explore-links"
                 class="text-muted dark:text-muted-dark px-2 text-sm font-bold tracking-widest uppercase"
             >
                 Explore
@@ -39,9 +39,26 @@ const description = `Portfolio, applications, and official links from ${siteConf
                         >About me and the projects I’m building.</span
                     >
                 </Card>
-                {siteConfig.apps.map((app) => <AppCard app={app} />)}
             </div>
         </section>
+
+        {
+            siteConfig.apps.length > 0 && (
+                <section class="mt-10" aria-labelledby="app-links">
+                    <h2
+                        id="app-links"
+                        class="text-muted dark:text-muted-dark px-2 text-sm font-bold tracking-widest uppercase"
+                    >
+                        Apps
+                    </h2>
+                    <div class="mt-3 grid gap-3">
+                        {siteConfig.apps.map((app) => (
+                            <AppCard app={app} />
+                        ))}
+                    </div>
+                </section>
+            )
+        }
 
         {
             siteConfig.profiles.length > 0 && (
