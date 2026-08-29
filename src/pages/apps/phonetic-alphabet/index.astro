@@ -1,5 +1,7 @@
 ---
 import AppMark from '../../../components/AppMark.astro';
+import Button from '../../../components/Button.astro';
+import Card from '../../../components/Card.astro';
 import SiteFooter from '../../../components/SiteFooter.astro';
 import SiteHeader from '../../../components/SiteHeader.astro';
 import { getApp, routes } from '../../../config/site';
@@ -36,16 +38,16 @@ const title = `${app.name} — ${app.platform} app`;
                         A focused new iOS experience currently taking shape. More product details
                         will be shared as the app gets closer to release.
                     </p>
-                    <span
-                        class="text-muted dark:text-muted-dark mt-9 inline-flex cursor-not-allowed rounded-xl bg-black/8 px-5 py-3 font-bold dark:bg-white/8"
+                    <Button
+                        variant="secondary"
+                        disabled
+                        class="mt-9"
                         aria-label="App Store availability: coming soon"
                     >
                         App Store · Coming soon
-                    </span>
+                    </Button>
                 </div>
-                <div
-                    class="bg-surface dark:bg-surface-dark mx-auto w-full max-w-sm rounded-[2.5rem] border border-black/8 p-4 shadow-2xl dark:border-white/10"
-                >
+                <Card radius="frame" padding="frame" class="mx-auto w-full max-w-sm shadow-2xl">
                     <div
                         class="aspect-[9/16] rounded-[1.8rem] p-8 text-white"
                         style={`background: linear-gradient(155deg, ${app.accent}, #17162b 72%);`}
@@ -59,7 +61,7 @@ const title = `${app.name} — ${app.platform} app`;
                             <p class="mt-2 opacity-70">Mock app screen</p>
                         </div>
                     </div>
-                </div>
+                </Card>
             </div>
         </section>
 
@@ -80,18 +82,22 @@ const title = `${app.name} — ${app.platform} app`;
                             'The feature set and release details will be published when they are ready.',
                         ],
                     ].map(([heading, copy]) => (
-                        <article class="rounded-2xl bg-black/[0.035] p-6 dark:bg-white/[0.045]">
+                        <Card as="article" variant="subtle">
                             <h2 class="text-xl font-bold">{heading}</h2>
                             <p class="text-muted dark:text-muted-dark mt-3 leading-7">{copy}</p>
-                        </article>
+                        </Card>
                     ))
                 }
             </div>
         </section>
 
         <section class="mx-auto max-w-6xl px-5 py-20 sm:px-8">
-            <div
-                class="bg-ink dark:bg-surface-dark rounded-3xl p-8 text-white sm:flex sm:items-center sm:justify-between sm:p-12"
+            <Card
+                as="section"
+                variant="inverse"
+                radius="large"
+                padding="large"
+                class="sm:flex sm:items-center sm:justify-between"
             >
                 <div>
                     <h2 class="text-3xl font-extrabold">The important details.</h2>
@@ -100,18 +106,16 @@ const title = `${app.name} — ${app.platform} app`;
                     </p>
                 </div>
                 <div class="mt-7 flex flex-wrap gap-3 sm:mt-0">
-                    <a
-                        href={routes.privacyPolicy(app.slug)}
-                        class="text-ink rounded-xl bg-white px-4 py-3 font-bold transition hover:-translate-y-0.5"
-                        >Privacy policy</a
+                    <Button href={routes.privacyPolicy(app.slug)} variant="inverse" size="small"
+                        >Privacy policy</Button
                     >
-                    <a
+                    <Button
                         href={routes.termsOfService(app.slug)}
-                        class="rounded-xl border border-white/20 px-4 py-3 font-bold transition hover:-translate-y-0.5 hover:bg-white/10"
-                        >Terms of service</a
+                        variant="inverse-outline"
+                        size="small">Terms of service</Button
                     >
                 </div>
-            </div>
+            </Card>
         </section>
     </main>
     <SiteFooter />

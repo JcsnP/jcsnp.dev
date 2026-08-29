@@ -2,6 +2,7 @@
 import type { AppConfig } from '../config/site';
 import { routes } from '../config/site';
 import AppMark from './AppMark.astro';
+import Card from './Card.astro';
 
 interface Props {
     app: AppConfig;
@@ -10,9 +11,7 @@ interface Props {
 const { app } = Astro.props;
 ---
 
-<article
-    class="group bg-surface dark:bg-surface-dark flex h-full flex-col rounded-2xl border border-black/8 p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/8"
->
+<Card as="article" interactive class="group flex h-full flex-col">
     <div class="flex items-start justify-between gap-4">
         <AppMark accent={app.accent} />
         <span
@@ -33,4 +32,4 @@ const { app } = Astro.props;
         Explore app
         <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
     </a>
-</article>
+</Card>

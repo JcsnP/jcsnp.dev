@@ -1,0 +1,60 @@
+---
+interface Props {
+    href?: string;
+    variant?: 'primary' | 'secondary' | 'inverse' | 'inverse-outline';
+    size?: 'small' | 'medium';
+    disabled?: boolean;
+    ariaLabel?: string;
+    class?: string;
+    type?: 'button' | 'submit' | 'reset';
+}
+
+const {
+    href,
+    variant = 'primary',
+    size = 'medium',
+    disabled = false,
+    ariaLabel,
+    class: className,
+    type = 'button',
+} = Astro.props;
+
+const baseClasses =
+    'inline-flex items-center justify-center rounded-xl font-bold transition focus-visible:outline-offset-3';
+const interactiveClasses = disabled ? 'cursor-not-allowed opacity-70' : 'hover:-translate-y-0.5';
+const sizeClasses = {
+    small: 'px-4 py-3',
+    medium: 'px-5 py-3',
+};
+const variantClasses = {
+    primary: 'bg-ink text-white shadow-lg hover:shadow-xl dark:bg-white dark:text-ink',
+    secondary:
+        'bg-black/8 text-muted hover:bg-black/12 dark:bg-white/8 dark:text-muted-dark dark:hover:bg-white/12',
+    inverse: 'bg-white text-ink',
+    'inverse-outline': 'border border-white/20 text-white hover:bg-white/10',
+};
+
+const classes = [
+    baseClasses,
+    interactiveClasses,
+    sizeClasses[size],
+    variantClasses[variant],
+    className,
+];
+---
+
+{
+    href && !disabled ? (
+        <a href={href} class:list={classes} aria-label={ariaLabel}>
+            <slot />
+        </a>
+    ) : disabled ? (
+        <span class:list={classes} aria-label={ariaLabel} aria-disabled="true">
+            <slot />
+        </span>
+    ) : (
+        <button type={type} class:list={classes} aria-label={ariaLabel}>
+            <slot />
+        </button>
+    )
+}

@@ -19,6 +19,8 @@ These instructions apply to the entire repository unless a more specific `AGENTS
 - Keep imports grouped at the top of the Astro frontmatter or module.
 - Let Prettier handle formatting and ESLint handle correctness. Do not add conflicting stylistic ESLint rules.
 - Use route helpers instead of repeating app and legal URL strings.
+- Use the shared `Button.astro` variants for styled text actions. Keep navigation, card, and inline text links semantically distinct.
+- Use `Card.astro` for shared surface, subtle, inverse, and framed card treatments instead of repeating border, background, radius, padding, and elevation classes.
 
 ## Interface standards
 

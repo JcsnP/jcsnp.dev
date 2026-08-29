@@ -1,5 +1,7 @@
 ---
 import AppCard from '../components/AppCard.astro';
+import Button from '../components/Button.astro';
+import Card from '../components/Card.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import { routes, siteConfig } from '../config/site';
@@ -9,64 +11,130 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout>
     <SiteHeader />
     <main>
-        <section class="relative isolate overflow-hidden">
+        <section class="relative overflow-hidden">
             <div
-                class="absolute inset-x-0 top-0 -z-10 mx-auto h-[32rem] max-w-5xl rounded-full bg-[radial-gradient(circle,rgba(108,99,255,0.18),transparent_67%)] blur-2xl"
+                class="absolute inset-0 -z-10 opacity-70"
+                style="background: radial-gradient(circle at 65% 30%, color-mix(in srgb, #6c63ff 22%, transparent), transparent 42%);"
             >
             </div>
-            <div class="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32 lg:py-40">
-                <div class="max-w-3xl">
-                    <p
-                        class="border-accent/20 bg-accent-soft text-accent dark:bg-accent/15 mb-5 inline-flex rounded-full border px-4 py-2 text-sm font-bold"
-                    >
-                        Software developer · Mobile app maker
-                    </p>
-                    <h1
-                        class="text-5xl leading-[1.04] font-extrabold tracking-[-0.045em] sm:text-7xl"
-                    >
-                        Hello, I’m <span class="text-accent">jcsnp</span>.<br />I build useful
-                        digital things.
+            <div
+                class="mx-auto grid max-w-6xl items-center gap-14 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[1fr_0.8fr] lg:py-36"
+            >
+                <div>
+                    <div class="flex items-center gap-5">
+                        <div
+                            class="grid size-24 place-items-center rounded-[1.75rem] bg-[linear-gradient(145deg,#6c63ff,#252244)] text-3xl font-extrabold text-white shadow-lg"
+                            aria-hidden="true"
+                        >
+                            jc
+                        </div>
+                        <div>
+                            <p class="text-accent font-bold">Software developer</p>
+                            <p class="text-muted dark:text-muted-dark text-sm">
+                                {siteConfig.author.fullName}
+                            </p>
+                        </div>
+                    </div>
+                    <h1 class="mt-8 text-5xl font-extrabold tracking-[-0.04em] sm:text-7xl">
+                        {siteConfig.author.alias}
                     </h1>
-                    <p
-                        class="text-muted dark:text-muted-dark mt-8 max-w-2xl text-lg leading-8 sm:text-xl"
-                    >
-                        I’m {siteConfig.author.fullName}, a software developer creating thoughtful
-                        mobile applications and web experiences.
+                    <p class="text-muted dark:text-muted-dark mt-6 max-w-xl text-xl leading-8">
+                        I create thoughtful mobile applications and web experiences, with a focus on
+                        clarity, usefulness, and the details that make software feel good.
                     </p>
-                    <div class="mt-10 flex flex-wrap gap-3">
-                        <a
-                            href={routes.appsSection}
-                            class="bg-ink dark:text-ink rounded-xl px-5 py-3 font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl dark:bg-white"
-                        >
-                            View my apps
-                        </a>
-                        <a
-                            href={routes.links}
-                            class="rounded-xl border border-black/10 bg-white/70 px-5 py-3 font-bold transition hover:-translate-y-0.5 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
-                        >
-                            All links
-                        </a>
+                    <div class="mt-9 flex flex-wrap gap-3">
+                        <Button href={routes.appsSection}>View my apps</Button>
+                        <Button href={routes.links} variant="secondary">All links</Button>
                     </div>
                 </div>
+
+                <Card radius="frame" padding="frame" class="mx-auto w-full max-w-sm shadow-2xl">
+                    <div
+                        class="aspect-[4/5] overflow-hidden rounded-[1.8rem] bg-[linear-gradient(155deg,#6c63ff,#17162b_72%)] p-8 text-white"
+                    >
+                        <p class="text-sm font-bold tracking-widest uppercase opacity-70">
+                            Currently creating
+                        </p>
+                        <div class="mt-16 space-y-4">
+                            <p class="text-5xl font-extrabold tracking-[-0.04em]">Think.</p>
+                            <p class="text-5xl font-extrabold tracking-[-0.04em] opacity-75">
+                                Build.
+                            </p>
+                            <p class="text-5xl font-extrabold tracking-[-0.04em] opacity-45">
+                                Refine.
+                            </p>
+                        </div>
+                        <div class="mt-12 h-px bg-white/20"></div>
+                        <p class="mt-5 max-w-xs leading-7 text-white/65">
+                            Mobile apps and considered web experiences by jcsnp.
+                        </p>
+                    </div>
+                </Card>
             </div>
         </section>
 
-        <section id="apps" class="scroll-mt-24 border-t border-black/5 dark:border-white/5">
+        <section class="border-y border-black/5 dark:border-white/5">
+            <div class="mx-auto grid max-w-6xl gap-5 px-5 py-20 sm:grid-cols-3 sm:px-8">
+                {
+                    [
+                        [
+                            'Thoughtful by default',
+                            'Simple choices, clear structure, and purposeful details shape every project.',
+                        ],
+                        [
+                            'Made to be useful',
+                            'Ideas become focused products designed around real tasks and everyday needs.',
+                        ],
+                        [
+                            'Always evolving',
+                            'Each release is a chance to listen, learn, refine, and make the experience better.',
+                        ],
+                    ].map(([heading, copy]) => (
+                        <Card as="article" variant="subtle">
+                            <h2 class="text-xl font-bold">{heading}</h2>
+                            <p class="text-muted dark:text-muted-dark mt-3 leading-7">{copy}</p>
+                        </Card>
+                    ))
+                }
+            </div>
+        </section>
+
+        <section id="apps" class="scroll-mt-24">
             <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
                 <div class="max-w-2xl">
                     <p class="text-accent text-sm font-bold tracking-widest uppercase">Apps</p>
                     <h2 class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
-                        Projects with a place of their own.
+                        A home for everything I make.
                     </h2>
                     <p class="text-muted dark:text-muted-dark mt-4 text-lg leading-8">
-                        Each application has its own page, updates, and clearly linked legal
-                        information.
+                        Explore the apps I’m building. Each has its own story, updates, and clearly
+                        linked legal information.
                     </p>
                 </div>
                 <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                     {siteConfig.apps.map((app) => <AppCard app={app} />)}
                 </div>
             </div>
+        </section>
+
+        <section class="mx-auto max-w-6xl px-5 pb-20 sm:px-8 sm:pb-28">
+            <Card
+                as="section"
+                variant="inverse"
+                radius="large"
+                padding="large"
+                class="sm:flex sm:items-center sm:justify-between"
+            >
+                <div>
+                    <h2 class="text-3xl font-extrabold">Find everything in one place.</h2>
+                    <p class="mt-3 text-white/65">
+                        Browse the portfolio, apps, and their official pages from the link hub.
+                    </p>
+                </div>
+                <Button href={routes.links} variant="inverse" class="mt-7 sm:mt-0">
+                    View all links
+                </Button>
+            </Card>
         </section>
     </main>
     <SiteFooter />

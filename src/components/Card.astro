@@ -1,0 +1,69 @@
+---
+type CardElement = 'article' | 'div' | 'section';
+
+interface Props {
+    as?: CardElement;
+    href?: string;
+    variant?: 'surface' | 'subtle' | 'inverse';
+    radius?: 'medium' | 'large' | 'frame';
+    padding?: 'none' | 'compact' | 'medium' | 'large' | 'frame';
+    interactive?: boolean;
+    ariaLabel?: string;
+    rel?: string;
+    class?: string;
+}
+
+const props = Astro.props as Props;
+
+const {
+    as: Tag = 'div',
+    href,
+    variant = 'surface',
+    radius = 'medium',
+    padding = 'medium',
+    interactive = Boolean(props.href),
+    ariaLabel,
+    rel,
+    class: className,
+} = props;
+
+const variantClasses = {
+    surface: 'border border-black/8 bg-surface shadow-sm dark:border-white/8 dark:bg-surface-dark',
+    subtle: 'bg-black/[0.035] dark:bg-white/[0.045]',
+    inverse: 'bg-ink text-white dark:bg-surface-dark',
+};
+const radiusClasses = {
+    medium: 'rounded-2xl',
+    large: 'rounded-3xl',
+    frame: 'rounded-[2.5rem]',
+};
+const paddingClasses = {
+    none: '',
+    compact: 'p-5',
+    medium: 'p-6',
+    large: 'p-8 sm:p-12',
+    frame: 'p-4',
+};
+const interactiveClasses = interactive
+    ? 'transition duration-300 hover:-translate-y-0.5 hover:shadow-xl'
+    : '';
+const classes = [
+    variantClasses[variant],
+    radiusClasses[radius],
+    paddingClasses[padding],
+    interactiveClasses,
+    className,
+];
+---
+
+{
+    href ? (
+        <a href={href} rel={rel} class:list={classes} aria-label={ariaLabel}>
+            <slot />
+        </a>
+    ) : (
+        <Tag class:list={classes} aria-label={ariaLabel}>
+            <slot />
+        </Tag>
+    )
+}
