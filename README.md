@@ -1,6 +1,6 @@
 # jcsnp.xyz
 
-The personal portfolio of Chitsanupong Paenyoi (`jcsnp`) and a shared home for independently designed mobile-app pages. The site is statically generated for GitHub Pages.
+The personal portfolio of Chitsanupong Paenyoi (`jcsnp`) and a directory of mobile applications with links to their independent websites and store listings. The site is statically generated for GitHub Pages.
 
 ## Stack
 
@@ -34,10 +34,7 @@ The development server prints the local URL after it starts.
 ## Routes
 
 - `/` — developer portfolio and app grid
-- `/links/` — curated directory of portfolio, app, legal, and future profile links
-- `/apps/phonetic-alphabet/` — PhoneticAlphabet app page
-- `/apps/phonetic-alphabet/privacy-policy/` — mock privacy policy
-- `/apps/phonetic-alphabet/terms-of-service/` — mock terms of service
+- `/links/` — curated directory of portfolio, app, store, and future profile links
 
 ## Project structure
 
@@ -46,24 +43,22 @@ src/
     components/      Shared interface elements
     config/          Typed site identity, navigation, routes, profiles, and app registry
     layouts/         Shared page shell and metadata
-    pages/           Static routes, with app-owned pages in separate folders
+    pages/           Portfolio and link-directory routes
     styles/          Global Tailwind and accessibility styles
 public/              Static assets
 ```
 
 ## Website configuration
 
-Edit `src/config/site.ts` to update site identity, navigation, external profiles, and the app registry. Shared pages and components consume this configuration so labels and routes stay consistent.
+Edit `src/config/site.ts` to update site identity, navigation, external profiles, and the app registry. Shared pages and components consume this configuration so labels and destinations stay consistent.
 
-Unique marketing and legal copy belongs in the corresponding folder under `src/pages/apps/`; it should not be moved into the global configuration.
+Each app may define optional `website`, `appStore`, and `playStore` URLs. Destinations without verified URLs are omitted automatically.
 
 ### Adding an app
 
 1. Register typed app metadata in `siteConfig.apps`.
-2. Create `src/pages/apps/<app-slug>/index.astro`.
-3. Add separate `privacy-policy/index.astro` and `terms-of-service/index.astro` files.
-4. Use the route helpers from `src/config/site.ts` for internal URLs.
-5. Run all verification commands before publishing.
+2. Add its verified external website, App Store, and Play Store destinations when available.
+3. Run all verification commands before publishing.
 
 ## Theme and SEO
 

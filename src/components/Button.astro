@@ -4,6 +4,7 @@ interface Props {
     variant?: 'primary' | 'secondary' | 'inverse' | 'inverse-outline';
     size?: 'small' | 'medium';
     disabled?: boolean;
+    external?: boolean;
     ariaLabel?: string;
     class?: string;
     type?: 'button' | 'submit' | 'reset';
@@ -14,6 +15,7 @@ const {
     variant = 'primary',
     size = 'medium',
     disabled = false,
+    external = false,
     ariaLabel,
     class: className,
     type = 'button',
@@ -45,7 +47,13 @@ const classes = [
 
 {
     href && !disabled ? (
-        <a href={href} class:list={classes} aria-label={ariaLabel}>
+        <a
+            href={href}
+            class:list={classes}
+            aria-label={ariaLabel}
+            target={external ? '_blank' : undefined}
+            rel={external ? 'noreferrer' : undefined}
+        >
             <slot />
         </a>
     ) : disabled ? (

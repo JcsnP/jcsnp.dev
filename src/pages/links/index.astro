@@ -1,5 +1,5 @@
 ---
-import AppMark from '../../components/AppMark.astro';
+import AppCard from '../../components/AppCard.astro';
 import Card from '../../components/Card.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
@@ -39,39 +39,7 @@ const description = `Portfolio, applications, and official links from ${siteConf
                         >About me and the projects I’m building.</span
                     >
                 </Card>
-                {
-                    siteConfig.apps.map((app) => (
-                        <Card as="article" padding="compact">
-                            <a
-                                href={routes.app(app.slug)}
-                                class="flex items-center gap-4 rounded-xl"
-                            >
-                                <AppMark accent={app.accent} />
-                                <span class="min-w-0 flex-1">
-                                    <span class="block font-bold">{app.name}</span>
-                                    <span class="text-muted dark:text-muted-dark mt-1 block text-sm">
-                                        {app.platform} · {app.status}
-                                    </span>
-                                </span>
-                                <span aria-hidden="true">→</span>
-                            </a>
-                            <div class="mt-4 flex flex-wrap gap-2 border-t border-black/5 pt-4 dark:border-white/5">
-                                <a
-                                    href={routes.privacyPolicy(app.slug)}
-                                    class="text-muted hover:text-ink dark:text-muted-dark dark:hover:text-ink-dark rounded-lg px-3 py-2 text-sm font-semibold transition hover:bg-black/5 dark:hover:bg-white/5"
-                                >
-                                    Privacy policy
-                                </a>
-                                <a
-                                    href={routes.termsOfService(app.slug)}
-                                    class="text-muted hover:text-ink dark:text-muted-dark dark:hover:text-ink-dark rounded-lg px-3 py-2 text-sm font-semibold transition hover:bg-black/5 dark:hover:bg-white/5"
-                                >
-                                    Terms of service
-                                </a>
-                            </div>
-                        </Card>
-                    ))
-                }
+                {siteConfig.apps.map((app) => <AppCard app={app} />)}
             </div>
         </section>
 

@@ -7,8 +7,8 @@ These instructions apply to the entire repository unless a more specific `AGENTS
 - Keep the project statically generated with Astro, TypeScript, and Tailwind CSS.
 - Do not add a client-side framework or server runtime unless a requirement cannot be met with Astro and minimal browser JavaScript.
 - Treat `src/config/site.ts` as the source of truth for site identity, shared navigation, profile links, app metadata, and route construction.
-- Keep unique app marketing and legal content in its app folder under `src/pages/apps/`.
-- Reuse layouts and small interface components, but do not force distinct app pages into a rigid shared content template.
+- Keep app metadata and optional external website/store destinations in the central app registry.
+- Do not create local app detail or legal pages; app-specific sites are separate projects.
 
 ## Code style
 
@@ -37,7 +37,7 @@ These instructions apply to the entire repository unless a more specific `AGENTS
 - Keep important content in static HTML rather than requiring client-side rendering.
 - Emit canonical and social URLs only when a valid production origin is configured.
 - Never publish placeholder contact details, a guessed domain, or claims that an unreleased app is available.
-- Mark mock legal content clearly and replace it before a production app release.
+- Never add guessed app, App Store, or Play Store URLs. Omit unavailable destinations until verified.
 
 ## Verification
 

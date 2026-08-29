@@ -1,12 +1,16 @@
 ---
 interface Props {
     accent: string;
-    size?: 'small' | 'large';
+    label: string;
+    size?: 'small' | 'medium' | 'large';
 }
 
-const { accent, size = 'small' } = Astro.props;
-const dimensions =
-    size === 'large' ? 'size-24 rounded-[1.75rem] text-4xl' : 'size-14 rounded-2xl text-xl';
+const { accent, label, size = 'small' } = Astro.props;
+const dimensions = {
+    small: 'size-14 rounded-2xl text-xl',
+    medium: 'size-16 rounded-2xl text-xl',
+    large: 'size-24 rounded-[1.75rem] text-4xl',
+}[size];
 ---
 
 <div
@@ -17,5 +21,5 @@ const dimensions =
     style={`background: linear-gradient(145deg, ${accent}, color-mix(in srgb, ${accent} 65%, #161532));`}
     aria-hidden="true"
 >
-    PA
+    {label}
 </div>

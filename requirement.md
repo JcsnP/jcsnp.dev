@@ -1,16 +1,16 @@
 # jcsnp website
 
-Create a website for my portfolio, main page showing a dev's information. and it serve apps section that use for my mobile application project. it will be like `jcsnp.xxx/apps/<appname>`
+Create a website for my portfolio. The main page shows developer information and a list of mobile application projects.
 
-each app has its website but instead of create separate website, we will create new page in this project.
+Each app has a separate website project. This portfolio only lists apps and links to their external website, App Store listing, and Play Store listing when those destinations are available.
 
-## apps page
+## Apps section
 
-app website serve at `jcsnp.xxx/apps/<appname>`. policy serve at `jcsnp.xxx/apps/<appname>#privacy-policy`, terms of service serve at `jcsnp.xxx/apps/<appname>#terms-of-service`
+Render apps as cards on the landing page and link hub. Do not create local app detail, privacy-policy, or terms-of-service pages.
 
 ## technical requirement
 
-this website should be static web page cause i will deploy with github page. so you need to use static site generator framework. each app can have difference page content, so i prefer to not use a component for some part (make it separate as a folder)
+This website must be statically generated because it will be deployed with GitHub Pages.
 
 ### additional technical requirement
 
@@ -31,12 +31,12 @@ create a short landing page that display about my short information then render 
 
 - my aka is `jcsnp` my full name is `Chitsanupong Paenyoi`
 - mock app name called `PhoneticAlphabet` it's iOS application, no store yet
-- mock privacy-policy and terms
+- app website and store links will be added when available
 - default theme is system if possible, fallback to light
 - github page deployment mode: custom domain
 - i can't decide tld yet.
 - improve the SEO
 
-## New requirement
+## Links page
 
-- I want to change the website behaviour. instead of using anchor for tos and policy, we should use other solution. but could you give me an idea
+Provide `/links/` as a curated directory of the portfolio, apps, verified external app destinations, and future profile links.

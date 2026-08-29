@@ -6,7 +6,7 @@ interface Props {
     href?: string;
     variant?: 'surface' | 'subtle' | 'inverse';
     radius?: 'medium' | 'large' | 'frame';
-    padding?: 'none' | 'compact' | 'medium' | 'large' | 'frame';
+    padding?: 'none' | 'small' | 'compact' | 'medium' | 'large' | 'frame';
     interactive?: boolean;
     ariaLabel?: string;
     rel?: string;
@@ -39,6 +39,7 @@ const radiusClasses = {
 };
 const paddingClasses = {
     none: '',
+    small: 'p-4',
     compact: 'p-5',
     medium: 'p-6',
     large: 'p-8 sm:p-12',

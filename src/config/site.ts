@@ -8,10 +8,16 @@ export interface SiteLink {
 export interface AppConfig {
     name: string;
     slug: string;
-    platform: 'iOS' | 'Android' | 'Web';
+    mark: string;
+    platforms: Array<'iOS' | 'Android' | 'Web'>;
     status: 'Coming soon' | 'Available';
     summary: string;
     accent: string;
+    links: {
+        website?: string;
+        appStore?: string;
+        playStore?: string;
+    };
 }
 
 export interface SiteConfig {
@@ -37,9 +43,6 @@ export const routes = {
     home: '/',
     links: '/links/',
     appsSection: '/#apps',
-    app: (slug: string) => `/apps/${slug}/`,
-    privacyPolicy: (slug: string) => `/apps/${slug}/privacy-policy/`,
-    termsOfService: (slug: string) => `/apps/${slug}/terms-of-service/`,
 } as const;
 
 const configuredUrl = import.meta.env.PUBLIC_SITE_URL?.trim();
@@ -68,20 +71,12 @@ export const siteConfig: SiteConfig = {
         {
             name: 'PhoneticAlphabet',
             slug: 'phonetic-alphabet',
-            platform: 'iOS',
+            mark: 'PA',
+            platforms: ['iOS'],
             status: 'Coming soon',
             summary: 'An upcoming iOS application by jcsnp.',
             accent: '#6c63ff',
+            links: {},
         },
     ],
 };
-
-export function getApp(slug: string): AppConfig {
-    const app = siteConfig.apps.find((candidate) => candidate.slug === slug);
-
-    if (!app) {
-        throw new Error(`Unknown app slug: ${slug}`);
-    }
-
-    return app;
-}
