@@ -1,0 +1,139 @@
+<aside
+    class="solo-dev-notice"
+    data-solo-dev-notice
+    aria-label="Note from the developer"
+    aria-hidden="true"
+    hidden
+>
+    <div class="solo-dev-notice__copy">
+        <p class="solo-dev-notice__eyebrow">✦ Currently making things</p>
+        <p class="solo-dev-notice__message">
+            Exploring ideas, writing code, and learning along the way.
+        </p>
+    </div>
+    <button
+        class="solo-dev-notice__close"
+        type="button"
+        data-solo-dev-notice-close
+        aria-label="Dismiss notice"
+    >
+        <span aria-hidden="true">×</span>
+    </button>
+</aside>
+
+<script>
+    const notice = document.querySelector<HTMLElement>('[data-solo-dev-notice]');
+    const closeButton = notice?.querySelector<HTMLButtonElement>('[data-solo-dev-notice-close]');
+
+    if (notice && closeButton) {
+        const showNotice = window.setTimeout(() => {
+            notice.hidden = false;
+            notice.setAttribute('aria-hidden', 'false');
+        }, 7000);
+
+        closeButton.addEventListener('click', () => {
+            window.clearTimeout(showNotice);
+            notice.hidden = true;
+            notice.setAttribute('aria-hidden', 'true');
+        });
+    }
+</script>
+
+<style>
+    .solo-dev-notice {
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 20;
+        display: flex;
+        width: min(calc(100vw - 2rem), 22rem);
+        gap: 0.75rem;
+        align-items: center;
+        padding: 0.75rem;
+        border: 1px solid color-mix(in srgb, var(--color-accent) 20%, transparent);
+        border-radius: 0.875rem;
+        background: color-mix(in srgb, var(--color-surface) 94%, transparent);
+        box-shadow: 0 1rem 3rem rgb(32 33 30 / 15%);
+        backdrop-filter: blur(1rem);
+        animation: solo-dev-notice-in 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    :global(.dark) .solo-dev-notice {
+        border-color: color-mix(in srgb, var(--color-accent) 35%, transparent);
+        background: color-mix(in srgb, var(--color-surface-dark) 94%, transparent);
+        box-shadow: 0 1rem 3rem rgb(0 0 0 / 30%);
+    }
+
+    .solo-dev-notice__copy {
+        min-width: 0;
+    }
+
+    .solo-dev-notice__eyebrow {
+        margin: 0;
+        color: var(--color-accent);
+        font-size: 1.05rem;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+    }
+
+    .solo-dev-notice__message {
+        margin: 0.2rem 0 0;
+        color: var(--color-ink);
+        font-size: 0.8rem;
+        line-height: 1.35;
+    }
+
+    :global(.dark) .solo-dev-notice__message {
+        color: var(--color-ink-dark);
+    }
+
+    .solo-dev-notice__close {
+        flex: 0 0 auto;
+        width: 1.5rem;
+        height: 1.5rem;
+        margin: 0;
+        border: 0;
+        border-radius: 999px;
+        color: var(--color-muted);
+        font-size: 1.25rem;
+        line-height: 1;
+        cursor: pointer;
+    }
+
+    .solo-dev-notice__close:hover {
+        background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+        color: var(--color-ink);
+    }
+
+    :global(.dark) .solo-dev-notice__close {
+        color: var(--color-muted-dark);
+    }
+
+    :global(.dark) .solo-dev-notice__close:hover {
+        color: var(--color-ink-dark);
+    }
+
+    @keyframes solo-dev-notice-in {
+        from {
+            opacity: 0;
+            transform: translateY(1rem) scale(0.98);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .solo-dev-notice {
+            animation: none;
+        }
+    }
+
+    @media (min-width: 640px) {
+        .solo-dev-notice {
+            right: 1.5rem;
+            bottom: 1.5rem;
+        }
+    }
+</style>
