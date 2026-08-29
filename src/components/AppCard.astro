@@ -1,0 +1,36 @@
+---
+import type { AppConfig } from '../config/site';
+import { routes } from '../config/site';
+import AppMark from './AppMark.astro';
+
+interface Props {
+    app: AppConfig;
+}
+
+const { app } = Astro.props;
+---
+
+<article
+    class="group bg-surface dark:bg-surface-dark flex h-full flex-col rounded-2xl border border-black/8 p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-white/8"
+>
+    <div class="flex items-start justify-between gap-4">
+        <AppMark accent={app.accent} />
+        <span
+            class="text-muted dark:text-muted-dark rounded-full bg-black/5 px-3 py-1 text-xs font-semibold dark:bg-white/7"
+        >
+            {app.status}
+        </span>
+    </div>
+    <div class="mt-8 flex-1">
+        <p class="text-accent text-sm font-semibold">{app.platform}</p>
+        <h3 class="mt-1 text-2xl font-bold tracking-tight">{app.name}</h3>
+        <p class="text-muted dark:text-muted-dark mt-3 leading-7">{app.summary}</p>
+    </div>
+    <a
+        href={routes.app(app.slug)}
+        class="text-accent mt-7 inline-flex items-center gap-2 font-bold"
+    >
+        Explore app
+        <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+    </a>
+</article>

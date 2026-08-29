@@ -1,0 +1,21 @@
+---
+interface Props {
+    accent: string;
+    size?: 'small' | 'large';
+}
+
+const { accent, size = 'small' } = Astro.props;
+const dimensions =
+    size === 'large' ? 'size-24 rounded-[1.75rem] text-4xl' : 'size-14 rounded-2xl text-xl';
+---
+
+<div
+    class:list={[
+        dimensions,
+        'grid shrink-0 place-items-center font-extrabold text-white shadow-lg',
+    ]}
+    style={`background: linear-gradient(145deg, ${accent}, color-mix(in srgb, ${accent} 65%, #161532));`}
+    aria-hidden="true"
+>
+    PA
+</div>

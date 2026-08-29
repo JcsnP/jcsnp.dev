@@ -1,0 +1,38 @@
+<button
+    id="theme-toggle"
+    type="button"
+    class="text-ink dark:text-ink-dark inline-flex size-10 items-center justify-center rounded-xl border border-black/10 bg-white/70 shadow-sm transition hover:-translate-y-0.5 hover:bg-white dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
+    aria-label="Switch color theme"
+>
+    <svg class="size-5 dark:hidden" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+            d="M12 3V1m0 22v-2m9-9h2M1 12h2m16.36-6.36 1.42-1.42M3.22 20.78l1.42-1.42m14.72 0 1.42 1.42M3.22 3.22l1.42 1.42"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"></path>
+        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"></circle>
+    </svg>
+    <svg class="hidden size-5 dark:block" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+            d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linejoin="round"></path>
+    </svg>
+</button>
+
+<script>
+    const toggle = document.querySelector<HTMLButtonElement>('#theme-toggle');
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+
+    toggle?.addEventListener('click', () => {
+        const dark = !document.documentElement.classList.contains('dark');
+        document.documentElement.classList.toggle('dark', dark);
+
+        try {
+            localStorage.setItem('jcsnp-theme', dark ? 'dark' : 'light');
+        } catch {
+            document.documentElement.classList.toggle('dark', media.matches);
+        }
+    });
+</script>

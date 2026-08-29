@@ -1,0 +1,64 @@
+---
+import SiteFooter from '../../../../components/SiteFooter.astro';
+import SiteHeader from '../../../../components/SiteHeader.astro';
+import { getApp, routes } from '../../../../config/site';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const app = getApp('phonetic-alphabet');
+const title = `Terms of Service — ${app.name}`;
+const description = `Terms of service for the ${app.name} iOS application.`;
+---
+
+<BaseLayout {title} {description}>
+    <SiteHeader />
+    <main class="mx-auto max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
+        <a href={routes.app(app.slug)} class="text-accent font-bold">← Back to {app.name}</a>
+        <article class="mt-10">
+            <p class="text-accent text-sm font-bold tracking-widest uppercase">Mock document</p>
+            <h1 class="mt-3 text-4xl font-extrabold tracking-tight sm:text-5xl">
+                Terms of Service
+            </h1>
+            <p class="text-muted dark:text-muted-dark mt-4">Last updated: August 29, 2026</p>
+            <div class="text-muted dark:text-muted-dark mt-10 space-y-9 text-lg leading-8">
+                <p
+                    class="text-ink dark:text-ink-dark rounded-2xl border border-amber-500/20 bg-amber-500/10 p-5 text-base"
+                >
+                    This is placeholder content for an unreleased application. It is not final legal
+                    advice and must be replaced before production use.
+                </p>
+                <section>
+                    <h2 class="text-ink dark:text-ink-dark text-2xl font-bold">
+                        Using the application
+                    </h2>
+                    <p class="mt-3">
+                        The application is intended for lawful, personal use. Users must not attempt
+                        to disrupt, reverse engineer, or misuse the service where prohibited by
+                        applicable law.
+                    </p>
+                </section>
+                <section>
+                    <h2 class="text-ink dark:text-ink-dark text-2xl font-bold">Availability</h2>
+                    <p class="mt-3">
+                        Features may change during development, and uninterrupted availability is
+                        not guaranteed. Final release terms will describe supported functionality.
+                    </p>
+                </section>
+                <section>
+                    <h2 class="text-ink dark:text-ink-dark text-2xl font-bold">Disclaimer</h2>
+                    <p class="mt-3">
+                        The final terms will state the warranties, limitations, and responsibilities
+                        that apply to the released application.
+                    </p>
+                </section>
+                <section>
+                    <h2 class="text-ink dark:text-ink-dark text-2xl font-bold">Changes</h2>
+                    <p class="mt-3">
+                        These terms may be revised as the application develops. The revision date
+                        will identify the latest published version.
+                    </p>
+                </section>
+            </div>
+        </article>
+    </main>
+    <SiteFooter />
+</BaseLayout>

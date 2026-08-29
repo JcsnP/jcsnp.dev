@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-sans: 'Figtree', ui-sans-serif, system-ui, sans-serif;
+    --color-canvas: #f7f7f4;
+    --color-canvas-dark: #111210;
+    --color-surface: #ffffff;
+    --color-surface-dark: #1b1c19;
+    --color-ink: #20211e;
+    --color-ink-dark: #f2f2ed;
+    --color-muted: #676961;
+    --color-muted-dark: #afb1a8;
+    --color-accent: #5750d8;
+    --color-accent-soft: #e5e3ff;
+}
+
+:root {
+    color-scheme: light;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+}
+
+:root.dark {
+    color-scheme: dark;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 320px;
+    background: var(--color-canvas);
+    color: var(--color-ink);
+}
+
+.dark body {
+    background: var(--color-canvas-dark);
+    color: var(--color-ink-dark);
+}
+
+::selection {
+    background: var(--color-accent-soft);
+    color: var(--color-ink);
+}
+
+:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
