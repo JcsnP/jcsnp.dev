@@ -17,9 +17,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 style="background: radial-gradient(circle at 65% 30%, color-mix(in srgb, #6c63ff 22%, transparent), transparent 42%);"
             >
             </div>
-            <div
-                class="mx-auto grid max-w-6xl items-center gap-14 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[1fr_0.8fr] lg:py-36"
-            >
+            <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 lg:py-36">
                 <div>
                     <div class="flex items-center gap-5">
                         <div
@@ -35,10 +33,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                             </p>
                         </div>
                     </div>
-                    <h1 class="mt-8 text-5xl font-extrabold tracking-[-0.04em] sm:text-7xl">
-                        {siteConfig.author.alias}
+                    <h1
+                        class="hero-name mt-8 text-5xl font-extrabold tracking-[-0.04em] sm:text-7xl"
+                        aria-label={siteConfig.author.alias}
+                    >
+                        {
+                            siteConfig.author.alias.split('').map((character, index) => (
+                                <span
+                                    aria-hidden="true"
+                                    class="hero-name__letter"
+                                    style={`--letter-index: ${index}`}
+                                >
+                                    {character}
+                                </span>
+                            ))
+                        }
                     </h1>
-                    <p class="text-muted dark:text-muted-dark mt-6 max-w-xl text-xl leading-8">
+                    <p class="text-muted dark:text-muted-dark mt-6 max-w-4xl text-xl leading-8">
                         I create thoughtful mobile applications and web experiences, with a focus on
                         clarity, usefulness, and the details that make software feel good.
                     </p>
@@ -46,29 +57,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                         <Button href={routes.appsSection}>View my apps</Button>
                     </div>
                 </div>
-
-                <Card radius="frame" padding="frame" class="mx-auto w-full max-w-sm shadow-2xl">
-                    <div
-                        class="aspect-[4/5] overflow-hidden rounded-[1.8rem] bg-[linear-gradient(155deg,#6c63ff,#17162b_72%)] p-8 text-white"
-                    >
-                        <p class="text-sm font-bold tracking-widest uppercase opacity-70">
-                            Currently creating
-                        </p>
-                        <div class="mt-16 space-y-4">
-                            <p class="text-5xl font-extrabold tracking-[-0.04em]">Think.</p>
-                            <p class="text-5xl font-extrabold tracking-[-0.04em] opacity-75">
-                                Build.
-                            </p>
-                            <p class="text-5xl font-extrabold tracking-[-0.04em] opacity-45">
-                                Refine.
-                            </p>
-                        </div>
-                        <div class="mt-12 h-px bg-white/20"></div>
-                        <p class="mt-5 max-w-xs leading-7 text-white/65">
-                            Mobile apps and considered web experiences by jcsnp.
-                        </p>
-                    </div>
-                </Card>
             </div>
         </section>
 
@@ -138,3 +126,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </main>
     <SiteFooter />
 </BaseLayout>
+
+<style>
+    .hero-name__letter {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(0.35em);
+        animation: hero-name-letter 650ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        animation-delay: calc(var(--letter-index) * 90ms);
+    }
+
+    @keyframes hero-name-letter {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-name__letter {
+            opacity: 1;
+            transform: none;
+            animation: none;
+        }
+    }
+</style>
