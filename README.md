@@ -81,7 +81,15 @@ Do not add a `CNAME` until the final custom domain has been selected.
 
 ## Deployment
 
-Build with `npm run build` and publish the generated `dist/` directory through GitHub Pages. Configure `PUBLIC_SITE_URL` in the deployment workflow after the production domain is known.
+The repository includes a GitHub Actions workflow at `.github/workflows/deploy.yml`. It builds the static site and deploys `dist/` to GitHub Pages whenever changes are pushed to `main`.
+
+To enable deployment:
+
+1. Push the repository to GitHub and ensure the default branch is `main`.
+2. In the repository, open **Settings → Pages** and set **Source** to **GitHub Actions**.
+3. If the production HTTPS origin is known, add a repository variable named `PUBLIC_SITE_URL` under **Settings → Secrets and variables → Actions → Variables**. This enables canonical URLs and sitemap generation during the build.
+
+You can also run the workflow manually from the repository’s **Actions** tab using **Deploy to GitHub Pages → Run workflow**.
 
 ## Contributing
 
