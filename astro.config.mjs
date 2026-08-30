@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 
 const site = process.env.PUBLIC_SITE_URL?.trim() || undefined;
-const base = '/jcsnp.dev';
+const base = process.env.PUBLIC_BASE_PATH?.trim() || '/';
 
 export default defineConfig({
     base,
