@@ -26,15 +26,27 @@
     const closeButton = notice?.querySelector<HTMLButtonElement>('[data-solo-dev-notice-close]');
 
     if (notice && closeButton) {
+        const noticeDisplayDelay = 7000;
+        const noticeDuration = 8000;
+        let dismissNotice: number | undefined;
+
+        const hideNotice = () => {
+            if (dismissNotice !== undefined) {
+                window.clearTimeout(dismissNotice);
+            }
+            notice.hidden = true;
+            notice.setAttribute('aria-hidden', 'true');
+        };
+
         const showNotice = window.setTimeout(() => {
             notice.hidden = false;
             notice.setAttribute('aria-hidden', 'false');
-        }, 7000);
+            dismissNotice = window.setTimeout(hideNotice, noticeDuration);
+        }, noticeDisplayDelay);
 
         closeButton.addEventListener('click', () => {
             window.clearTimeout(showNotice);
-            notice.hidden = true;
-            notice.setAttribute('aria-hidden', 'true');
+            hideNotice();
         });
     }
 </script>
