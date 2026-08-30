@@ -57,8 +57,8 @@ export const siteConfig: SiteConfig = {
     description: 'The portfolio and mobile applications of Chitsanupong Paenyoi.',
     locale: 'en',
     themeColor: {
-        light: '#f7f7f4',
-        dark: '#111210',
+        light: '#f1f1ef',
+        dark: '#080808',
     },
     url: configuredUrl || undefined,
     navigation: [

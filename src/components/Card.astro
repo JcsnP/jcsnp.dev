@@ -29,10 +29,10 @@ const {
 
 const variantClasses = {
     surface:
-        'border border-black/8 bg-surface shadow-sm hover:border-black/15 hover:bg-black/[0.025] dark:border-white/8 dark:bg-surface-dark dark:hover:border-white/15 dark:hover:bg-white/[0.04]',
-    subtle: 'border border-transparent bg-black/[0.035] hover:border-black/10 hover:bg-black/[0.06] dark:bg-white/[0.045] dark:hover:border-white/10 dark:hover:bg-white/[0.07]',
+        'border border-black/10 bg-surface shadow-sm hover:border-black/25 hover:bg-white dark:border-white/10 dark:bg-surface-dark dark:hover:border-white/25 dark:hover:bg-[#1a1a1a]',
+    subtle: 'border border-transparent bg-black/[0.045] hover:border-black/15 hover:bg-black/[0.07] dark:bg-white/[0.05] dark:hover:border-white/15 dark:hover:bg-white/[0.08]',
     inverse:
-        'border border-transparent bg-ink text-white hover:border-white/20 hover:bg-ink/90 dark:bg-surface-dark dark:hover:border-white/15 dark:hover:bg-surface-dark/90',
+        'border border-white/10 bg-ink text-white hover:border-white/25 hover:bg-[#1b1b1b] dark:bg-surface-dark dark:text-white dark:hover:border-white/25 dark:hover:bg-[#1a1a1a]',
 };
 const radiusClasses = {
     medium: 'rounded-2xl',
@@ -48,7 +48,7 @@ const paddingClasses = {
     frame: 'p-4',
 };
 const interactiveClasses = interactive
-    ? 'transition-[background-color,border-color,box-shadow,transform] duration-700 hover:-translate-y-0.5 hover:shadow-xl'
+    ? 'transition-[background-color,border-color,box-shadow,transform] duration-500 hover:-translate-y-1 hover:shadow-xl'
     : '';
 const classes = [
     variantClasses[variant],

@@ -12,30 +12,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout>
     <SiteHeader />
     <main>
-        <section class="relative overflow-hidden">
+        <section class="relative overflow-hidden border-b border-black/10 dark:border-white/10">
             <div
                 class="absolute inset-0 -z-10 opacity-70"
-                style="background: radial-gradient(circle at 65% 30%, color-mix(in srgb, #6c63ff 22%, transparent), transparent 42%);"
+                style="background: radial-gradient(circle at 78% 24%, color-mix(in srgb, #ffffff 10%, transparent), transparent 34%);"
             >
             </div>
             <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 lg:py-36">
-                <div>
-                    <div class="flex items-center gap-5">
+                <div class="max-w-5xl">
+                    <div class="flex items-center gap-4">
                         <div
-                            class="grid size-24 place-items-center rounded-[1.75rem] bg-[linear-gradient(145deg,#6c63ff,#252244)] text-3xl font-extrabold text-white shadow-lg"
+                            class="bg-ink grid size-16 place-items-center rounded-full border border-black/15 text-xl font-extrabold text-white shadow-lg sm:size-20 sm:text-2xl dark:border-white/15"
                             aria-hidden="true"
                         >
                             jc
                         </div>
-                        <div>
-                            <p class="text-accent font-bold">Software developer</p>
-                            <p class="text-muted dark:text-muted-dark text-sm">
+                        <div class="border-l border-black/15 pl-4 dark:border-white/15">
+                            <p class="text-accent text-xs font-bold tracking-[0.22em] uppercase">
+                                Software developer
+                            </p>
+                            <p class="text-muted dark:text-muted-dark mt-1 text-sm">
                                 {siteConfig.author.fullName}
                             </p>
                         </div>
                     </div>
                     <h1
-                        class="hero-name mt-8 text-5xl font-extrabold tracking-[-0.04em] sm:text-7xl"
+                        class="hero-name mt-10 text-[clamp(4.5rem,16vw,11rem)] leading-[0.82] font-extrabold tracking-[-0.09em]"
                         aria-label={siteConfig.author.alias}
                     >
                         {
@@ -50,7 +52,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                             ))
                         }
                     </h1>
-                    <p class="text-muted dark:text-muted-dark mt-6 max-w-4xl text-xl leading-8">
+                    <p
+                        class="text-muted dark:text-muted-dark mt-8 max-w-2xl text-lg leading-8 sm:text-xl"
+                    >
                         I create thoughtful mobile applications and web experiences, with a focus on
                         clarity, usefulness, and the details that make software feel good.
                     </p>
@@ -61,7 +65,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
         </section>
 
-        <section class="border-y border-black/5 dark:border-white/5">
+        <section class="border-b border-black/10 dark:border-white/10">
             <div class="mx-auto grid max-w-6xl gap-5 px-5 py-20 sm:grid-cols-3 sm:px-8">
                 {
                     [
@@ -90,8 +94,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <section id="apps" class="scroll-mt-24">
             <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
                 <div class="max-w-2xl">
-                    <p class="text-accent text-sm font-bold tracking-widest uppercase">Apps</p>
-                    <h2 class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
+                    <p class="text-accent text-sm font-bold tracking-[0.22em] uppercase">
+                        Selected work
+                    </p>
+                    <h2 class="mt-3 text-3xl font-extrabold tracking-[-0.03em] sm:text-4xl">
                         A home for everything I make.
                     </h2>
                     <p class="text-muted dark:text-muted-dark mt-4 text-lg leading-8">
