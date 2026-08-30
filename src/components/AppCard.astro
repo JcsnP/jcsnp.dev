@@ -26,7 +26,7 @@ const destinations = [
     <AppMark accent={app.accent} label={app.mark} size="medium" />
     <div class="min-w-0 flex-1">
         <span
-            class="text-muted dark:text-muted-dark inline-flex rounded-full bg-black/5 px-2.5 py-0.5 text-xs font-semibold dark:bg-white/7"
+            class="text-muted dark:text-muted-dark inline-flex rounded-none bg-black/5 px-2.5 py-0.5 text-xs font-semibold dark:bg-white/7"
         >
             {app.status}
         </span>
@@ -44,7 +44,7 @@ const destinations = [
                         href={destination.href}
                         target="_blank"
                         rel="noreferrer"
-                        class="text-muted hover:text-ink dark:text-muted-dark dark:hover:text-ink-dark inline-flex size-8 items-center justify-center rounded-lg bg-black/5 transition hover:-translate-y-0.5 hover:bg-black/10 dark:bg-white/7 dark:hover:bg-white/12"
+                        class="text-muted hover:text-ink dark:text-muted-dark dark:hover:text-ink-dark inline-flex size-8 items-center justify-center rounded-none bg-black/5 transition hover:-translate-y-0.5 hover:bg-black/10 dark:bg-white/7 dark:hover:bg-white/12"
                         aria-label={`Open ${app.name} on ${destination.label}`}
                         title={destination.label}
                     >
@@ -52,7 +52,7 @@ const destinations = [
                     </a>
                 ) : (
                     <span
-                        class="text-muted dark:text-muted-dark inline-flex size-8 cursor-not-allowed items-center justify-center rounded-lg bg-black/5 opacity-30 dark:bg-white/7"
+                        class="text-muted dark:text-muted-dark inline-flex size-8 cursor-not-allowed items-center justify-center rounded-none bg-black/5 opacity-30 dark:bg-white/7"
                         aria-label={`${destination.label} link unavailable`}
                         title={`${destination.label} unavailable`}
                     >
