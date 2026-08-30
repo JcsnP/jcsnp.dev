@@ -81,7 +81,7 @@ Do not add a `CNAME` until the final custom domain has been selected.
 
 ## Deployment
 
-The repository includes a GitHub Actions workflow at `.github/workflows/deploy.yml`. It builds the static site and deploys `dist/` to GitHub Pages whenever changes are pushed to `main`.
+The repository includes a GitHub Actions workflow at `.github/workflows/deploy.yml`. It builds the static site and deploys `dist/` to GitHub Pages whenever changes are pushed to `main`. The Astro base path is configured for the current project URL, `https://jcsnp.github.io/jcsnp.dev/`.
 
 To enable deployment:
 

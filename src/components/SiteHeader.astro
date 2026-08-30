@@ -1,5 +1,5 @@
 ---
-import { siteConfig } from '../config/site';
+import { routes, siteConfig } from '../config/site';
 import ThemeToggle from './ThemeToggle.astro';
 ---
 
@@ -8,7 +8,7 @@ import ThemeToggle from './ThemeToggle.astro';
 >
     <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         <a
-            href="/"
+            href={routes.home}
             class="rounded-none text-lg font-extrabold tracking-tight"
             aria-label="jcsnp home"
         >

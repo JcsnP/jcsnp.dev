@@ -39,10 +39,14 @@ export interface SiteConfig {
     apps: AppConfig[];
 }
 
+const basePath = import.meta.env.BASE_URL.endsWith('/')
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+
 export const routes = {
-    home: '/',
-    links: '/links/',
-    appsSection: '/#apps',
+    home: basePath,
+    links: `${basePath}links/`,
+    appsSection: `${basePath}#apps`,
 } as const;
 
 const configuredUrl = import.meta.env.PUBLIC_SITE_URL?.trim();
