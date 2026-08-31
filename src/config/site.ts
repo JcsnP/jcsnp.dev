@@ -3,6 +3,7 @@ export interface SiteLink {
     href: string;
     description?: string;
     external?: boolean;
+    icon?: 'github' | 'x';
 }
 
 export interface AppConfig {
@@ -75,7 +76,10 @@ export const siteConfig: SiteConfig = {
         { label: 'Apps', href: routes.appsSection },
         { label: 'Links', href: routes.links },
     ],
-    profiles: [],
+    profiles: [
+        { label: '@_jcsnp', href: 'https://x.com/_jcsnp', external: true, icon: 'x' },
+        { label: 'JcsnP', href: 'https://github.com/JcsnP', external: true, icon: 'github' },
+    ],
     apps: [
         {
             name: 'PhoneticAlphabet',

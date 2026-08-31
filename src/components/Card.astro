@@ -10,6 +10,7 @@ interface Props {
     interactive?: boolean;
     ariaLabel?: string;
     rel?: string;
+    target?: '_blank' | '_self';
     class?: string;
 }
 
@@ -24,6 +25,7 @@ const {
     interactive = Boolean(props.href),
     ariaLabel,
     rel,
+    target,
     class: className,
 } = props;
 
@@ -61,7 +63,7 @@ const classes = [
 
 {
     href ? (
-        <a href={href} rel={rel} class:list={classes} aria-label={ariaLabel}>
+        <a href={href} rel={rel} target={target} class:list={classes} aria-label={ariaLabel}>
             <slot />
         </a>
     ) : (
