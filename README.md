@@ -8,7 +8,7 @@ The personal portfolio of Chitsanupong Paenyoi (`jcsnp`) and a directory of mobi
 - Tailwind CSS
 - ESLint and Prettier
 - GitHub Pages
-- Figtree from Google Fonts
+- Self-hosted Figtree from Google Fonts
 
 ## Getting started
 
@@ -53,6 +53,12 @@ public/              Static assets
 Edit `src/config/site.ts` to update site identity, navigation, external profiles, and the app registry. Shared pages and components consume this configuration so labels and destinations stay consistent.
 
 Each app may define optional `website`, `appStore`, and `playStore` URLs. Destinations without verified URLs are omitted automatically.
+
+## Performance assets
+
+Images rendered by the site live in `src/assets/` and are imported by Astro so production builds emit responsive, fingerprinted AVIF/WebP variants with fallbacks. Keep only social and other files that must retain a stable public URL in `public/`.
+
+Figtree is bundled locally as a variable WOFF2 font. This preserves the Google Fonts typeface without requiring a third-party font request during rendering.
 
 ### Adding an app
 

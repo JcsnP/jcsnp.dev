@@ -1,6 +1,7 @@
 ---
 import { siteConfig } from '../config/site';
 import '../styles/global.css';
+import figtreeLatin from '@fontsource-variable/figtree/files/figtree-latin-wght-normal.woff2?url';
 
 interface Props {
     title?: string;
@@ -59,12 +60,7 @@ const socialImage = siteConfig.url
             data-light-href={`${import.meta.env.BASE_URL}favicon-light.svg`}
             data-dark-href={`${import.meta.env.BASE_URL}favicon-dark.svg`}
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap"
-            rel="stylesheet"
-        />
+        <link rel="preload" href={figtreeLatin} as="font" type="font/woff2" crossorigin />
         <title>{title}</title>
         <script is:inline>
             (() => {

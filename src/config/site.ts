@@ -1,3 +1,8 @@
+import type { ImageMetadata } from 'astro';
+
+import phoneticAlphabetDarkIcon from '../assets/images/phonetic-alphabet/AppIcon-iOS-Dark-128x128@1x.png';
+import phoneticAlphabetLightIcon from '../assets/images/phonetic-alphabet/AppIcon-iOS-Default-128x128@1x.png';
+
 export interface SiteLink {
     label: string;
     href: string;
@@ -11,8 +16,8 @@ export interface AppConfig {
     slug: string;
     mark: string;
     icon?: {
-        light: string;
-        dark: string;
+        light: ImageMetadata;
+        dark: ImageMetadata;
     };
     platforms: Array<'iOS' | 'Android' | 'Web'>;
     status: 'Coming soon' | 'Available';
@@ -47,8 +52,6 @@ export interface SiteConfig {
 const basePath = import.meta.env.BASE_URL.endsWith('/')
     ? import.meta.env.BASE_URL
     : `${import.meta.env.BASE_URL}/`;
-const publicAsset = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
-
 export const routes = {
     home: basePath,
     links: `${basePath}links/`,
@@ -86,12 +89,8 @@ export const siteConfig: SiteConfig = {
             slug: 'phonetic-alphabet',
             mark: 'PA',
             icon: {
-                light: publicAsset(
-                    'assets/images/phonetic-alphabet/AppIcon-iOS-Default-128x128@1x.png',
-                ),
-                dark: publicAsset(
-                    'assets/images/phonetic-alphabet/AppIcon-iOS-Dark-128x128@1x.png',
-                ),
+                light: phoneticAlphabetLightIcon,
+                dark: phoneticAlphabetDarkIcon,
             },
             platforms: ['iOS'],
             status: 'Coming soon',

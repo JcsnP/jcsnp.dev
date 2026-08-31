@@ -1,5 +1,7 @@
 ---
 import AppCard from '../components/AppCard.astro';
+import heroMemoji from '../assets/memoji/greeting.png';
+import { getImage } from 'astro:assets';
 import Button from '../components/Button.astro';
 import Card from '../components/Card.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -7,6 +9,17 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SoloDevNotice from '../components/SoloDevNotice.astro';
 import { routes, siteConfig } from '../config/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const [heroAvif, heroWebp, heroPng] = await Promise.all(
+    ['avif', 'webp', 'png'].map((format) =>
+        getImage({
+            src: heroMemoji,
+            widths: [384, 768],
+            format,
+            quality: 'high',
+        }),
+    ),
+);
 ---
 
 <BaseLayout>
@@ -42,13 +55,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                         </div>
                     </div>
                     <div class="mx-auto hidden w-full max-w-[360px] lg:block">
-                        <img
-                            src={`${routes.home}assets/memoji/greeting.png`}
-                            alt={`Greeting Memoji of ${siteConfig.author.fullName}`}
-                            width="259"
-                            height="280"
-                            class="mx-auto block w-[88%] object-contain"
-                        />
+                        <picture>
+                            <source
+                                media="(min-width: 1024px)"
+                                type="image/avif"
+                                srcset={heroAvif.srcSet.attribute}
+                                sizes="(min-width: 1280px) 366px, 310px"
+                            />
+                            <source
+                                media="(min-width: 1024px)"
+                                type="image/webp"
+                                srcset={heroWebp.srcSet.attribute}
+                                sizes="(min-width: 1280px) 366px, 310px"
+                            />
+                            <source
+                                media="(min-width: 1024px)"
+                                srcset={heroPng.srcSet.attribute}
+                                sizes="(min-width: 1280px) 366px, 310px"
+                            />
+                            <img
+                                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                                alt=""
+                                width="768"
+                                height="768"
+                                fetchpriority="high"
+                                decoding="async"
+                                class="mx-auto block w-[88%] object-contain"
+                            />
+                        </picture>
                     </div>
                 </div>
             </div>

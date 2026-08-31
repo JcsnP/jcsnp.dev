@@ -1,5 +1,7 @@
 ---
 import AppCard from '../../components/AppCard.astro';
+import portraitMemoji from '../../assets/memoji/working.png';
+import { Image } from 'astro:assets';
 import Card from '../../components/Card.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
@@ -8,23 +10,22 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const title = `Links — ${siteConfig.author.alias}`;
 const description = `Portfolio, applications, and official links from ${siteConfig.author.fullName}.`;
-const memojiImages = ['thumbs-up.png', 'working.png'].map(
-    (filename) => `${routes.home}assets/memoji/${filename}`,
-);
 ---
 
 <BaseLayout {title} {description}>
     <SiteHeader />
     <main class="mx-auto min-h-[calc(100vh-9rem)] max-w-3xl px-5 py-16 sm:px-8 sm:py-24">
         <header class="text-center">
-            <img
-                id="memoji"
-                src={memojiImages[0]}
+            <Image
+                src={portraitMemoji}
                 alt={`Memoji portrait of ${siteConfig.author.fullName}`}
-                width="259"
-                height="280"
+                width="160"
+                format="webp"
+                quality="high"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
                 class="mx-auto h-32 w-auto object-contain sm:h-40"
-                data-memoji-sources={memojiImages.join(',')}
             />
             <p class="text-muted dark:text-muted-dark mt-6 text-lg">
                 {siteConfig.author.fullName} · Software developer
@@ -136,12 +137,3 @@ const memojiImages = ['thumbs-up.png', 'working.png'].map(
     </main>
     <SiteFooter />
 </BaseLayout>
-
-<script>
-    const memoji = document.querySelector<HTMLImageElement>('#memoji');
-    const sources = memoji?.dataset.memojiSources?.split(',').filter(Boolean) ?? [];
-
-    if (memoji && sources.length > 0) {
-        memoji.src = sources[Math.floor(Math.random() * sources.length)];
-    }
-</script>

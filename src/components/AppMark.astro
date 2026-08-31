@@ -1,10 +1,12 @@
 ---
+import { Image } from 'astro:assets';
+
 interface Props {
     accent: string;
     label: string;
     icon?: {
-        light: string;
-        dark: string;
+        light: import('astro').ImageMetadata;
+        dark: import('astro').ImageMetadata;
     };
     iconAlt?: string;
     size?: 'small' | 'medium' | 'large';
@@ -21,18 +23,22 @@ const dimensions = {
 {
     icon ? (
         <div class:list={[dimensions, 'shrink-0 overflow-hidden shadow-lg']}>
-            <img
+            <Image
                 src={icon.light}
                 alt={`${iconAlt ?? label} app icon`}
                 width="128"
                 height="128"
+                format="webp"
+                quality="high"
                 class="block size-full object-cover dark:hidden"
             />
-            <img
+            <Image
                 src={icon.dark}
                 alt=""
                 width="128"
                 height="128"
+                format="webp"
+                quality="high"
                 class="hidden size-full object-cover dark:block"
             />
         </div>
