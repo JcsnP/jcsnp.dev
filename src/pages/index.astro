@@ -22,10 +22,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <div class="max-w-5xl">
                     <div class="flex items-center gap-4">
                         <div
-                            class="bg-ink grid size-16 place-items-center rounded-none border border-black/15 text-xl font-extrabold text-white shadow-lg sm:size-20 sm:text-2xl dark:border-white/15"
+                            class="size-16 shrink-0 overflow-hidden rounded-none border border-black/15 shadow-lg sm:size-20 dark:border-white/15"
                             aria-hidden="true"
                         >
-                            jc
+                            <img
+                                src={`${routes.home}assets/images/logo/light.png`}
+                                alt=""
+                                width="512"
+                                height="512"
+                                class="block size-full object-cover dark:hidden"
+                            />
+                            <img
+                                src={`${routes.home}assets/images/logo/dark.png`}
+                                alt=""
+                                width="512"
+                                height="512"
+                                class="hidden size-full object-cover dark:block"
+                            />
                         </div>
                         <div class="border-l border-black/15 pl-4 dark:border-white/15">
                             <p class="text-accent text-xs font-bold tracking-[0.22em] uppercase">
