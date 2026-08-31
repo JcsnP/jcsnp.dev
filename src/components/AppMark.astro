@@ -2,10 +2,15 @@
 interface Props {
     accent: string;
     label: string;
+    icon?: {
+        light: string;
+        dark: string;
+    };
+    iconAlt?: string;
     size?: 'small' | 'medium' | 'large';
 }
 
-const { accent, label, size = 'small' } = Astro.props;
+const { accent, label, icon, iconAlt, size = 'small' } = Astro.props;
 const dimensions = {
     small: 'size-14 rounded-none text-xl',
     medium: 'size-16 rounded-none text-xl',
@@ -13,13 +18,34 @@ const dimensions = {
 }[size];
 ---
 
-<div
-    class:list={[
-        dimensions,
-        'grid shrink-0 place-items-center font-extrabold text-white shadow-lg',
-    ]}
-    style={`background: linear-gradient(145deg, color-mix(in srgb, ${accent} 30%, #1b1b1b), #080808);`}
-    aria-hidden="true"
->
-    {label}
-</div>
+{
+    icon ? (
+        <div class:list={[dimensions, 'shrink-0 overflow-hidden shadow-lg']}>
+            <img
+                src={icon.light}
+                alt={`${iconAlt ?? label} app icon`}
+                width="128"
+                height="128"
+                class="block size-full object-cover dark:hidden"
+            />
+            <img
+                src={icon.dark}
+                alt=""
+                width="128"
+                height="128"
+                class="hidden size-full object-cover dark:block"
+            />
+        </div>
+    ) : (
+        <div
+            class:list={[
+                dimensions,
+                'grid shrink-0 place-items-center font-extrabold text-white shadow-lg',
+            ]}
+            style={`background: linear-gradient(145deg, color-mix(in srgb, ${accent} 30%, #1b1b1b), #080808);`}
+            aria-hidden="true"
+        >
+            {label}
+        </div>
+    )
+}

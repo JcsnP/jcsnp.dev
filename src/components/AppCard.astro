@@ -23,7 +23,13 @@ const destinations = [
     padding="small"
     class="flex h-full flex-row items-center gap-3 sm:gap-4"
 >
-    <AppMark accent={app.accent} label={app.mark} size="medium" />
+    <AppMark
+        accent={app.accent}
+        label={app.mark}
+        icon={app.icon}
+        iconAlt={app.name}
+        size="medium"
+    />
     <div class="min-w-0 flex-1">
         <span
             class="text-muted dark:text-muted-dark inline-flex rounded-none bg-black/5 px-2.5 py-0.5 text-xs font-semibold dark:bg-white/7"

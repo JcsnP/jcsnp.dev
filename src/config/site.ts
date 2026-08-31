@@ -9,6 +9,10 @@ export interface AppConfig {
     name: string;
     slug: string;
     mark: string;
+    icon?: {
+        light: string;
+        dark: string;
+    };
     platforms: Array<'iOS' | 'Android' | 'Web'>;
     status: 'Coming soon' | 'Available';
     summary: string;
@@ -42,6 +46,7 @@ export interface SiteConfig {
 const basePath = import.meta.env.BASE_URL.endsWith('/')
     ? import.meta.env.BASE_URL
     : `${import.meta.env.BASE_URL}/`;
+const publicAsset = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 
 export const routes = {
     home: basePath,
@@ -76,6 +81,14 @@ export const siteConfig: SiteConfig = {
             name: 'PhoneticAlphabet',
             slug: 'phonetic-alphabet',
             mark: 'PA',
+            icon: {
+                light: publicAsset(
+                    'assets/images/phonetic-alphabet/AppIcon-iOS-Default-128x128@1x.png',
+                ),
+                dark: publicAsset(
+                    'assets/images/phonetic-alphabet/AppIcon-iOS-Dark-128x128@1x.png',
+                ),
+            },
             platforms: ['iOS'],
             status: 'Coming soon',
             summary: 'An upcoming iOS application by jcsnp.',
