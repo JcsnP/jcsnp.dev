@@ -19,61 +19,75 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             >
             </div>
             <div class="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 lg:py-36">
-                <div class="max-w-5xl">
-                    <div class="flex items-center gap-4">
-                        <div
-                            class="size-16 shrink-0 overflow-hidden rounded-none border border-black/15 shadow-lg sm:size-20 dark:border-white/15"
-                            aria-hidden="true"
-                        >
-                            <img
-                                src={`${routes.home}assets/images/logo/light.png`}
-                                alt=""
-                                width="512"
-                                height="512"
-                                class="block size-full object-cover dark:hidden"
-                            />
-                            <img
-                                src={`${routes.home}assets/images/logo/dark.png`}
-                                alt=""
-                                width="512"
-                                height="512"
-                                class="hidden size-full object-cover dark:block"
-                            />
-                        </div>
-                        <div class="border-l border-black/15 pl-4 dark:border-white/15">
-                            <p class="text-accent text-xs font-bold tracking-[0.22em] uppercase">
-                                Software developer
-                            </p>
-                            <p class="text-muted dark:text-muted-dark mt-1 text-sm">
-                                {siteConfig.author.fullName}
-                            </p>
-                        </div>
-                    </div>
-                    <h1
-                        class="hero-name mt-10 text-[clamp(4.5rem,16vw,11rem)] leading-[0.82] font-extrabold tracking-[-0.09em]"
-                        aria-label={siteConfig.author.alias}
-                    >
-                        {
-                            siteConfig.author.alias.split('').map((character, index) => (
-                                <span
-                                    aria-hidden="true"
-                                    class="hero-name__letter"
-                                    style={`--letter-index: ${index}`}
+                <div
+                    class="flex flex-col gap-10 xl:flex-row xl:items-end xl:justify-between xl:gap-0"
+                >
+                    <div class="max-w-5xl xl:min-w-0 xl:flex-1">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="size-16 shrink-0 overflow-hidden rounded-none border border-black/15 shadow-lg sm:size-20 dark:border-white/15"
+                                aria-hidden="true"
+                            >
+                                <img
+                                    src={`${routes.home}assets/images/logo/light.png`}
+                                    alt=""
+                                    width="512"
+                                    height="512"
+                                    class="block size-full object-cover dark:hidden"
+                                />
+                                <img
+                                    src={`${routes.home}assets/images/logo/dark.png`}
+                                    alt=""
+                                    width="512"
+                                    height="512"
+                                    class="hidden size-full object-cover dark:block"
+                                />
+                            </div>
+                            <div class="border-l border-black/15 pl-4 dark:border-white/15">
+                                <p
+                                    class="text-accent text-xs font-bold tracking-[0.22em] uppercase"
                                 >
-                                    {character}
-                                </span>
-                            ))
-                        }
-                    </h1>
-                    <p
-                        class="text-muted dark:text-muted-dark mt-8 max-w-2xl text-lg leading-8 sm:text-xl"
-                    >
-                        I create thoughtful mobile applications and web experiences, with a focus on
-                        clarity, usefulness, and the details that make software feel good.
-                    </p>
-                    <div class="mt-9 flex flex-wrap gap-3">
-                        <Button href={routes.appsSection}>View my apps</Button>
+                                    Software developer
+                                </p>
+                                <p class="text-muted dark:text-muted-dark mt-1 text-sm">
+                                    {siteConfig.author.fullName}
+                                </p>
+                            </div>
+                        </div>
+                        <h1
+                            class="hero-name mt-10 text-[clamp(4.5rem,16vw,11rem)] leading-[0.82] font-extrabold tracking-[-0.09em]"
+                            aria-label={siteConfig.author.alias}
+                        >
+                            {
+                                siteConfig.author.alias.split('').map((character, index) => (
+                                    <span
+                                        aria-hidden="true"
+                                        class="hero-name__letter"
+                                        style={`--letter-index: ${index}`}
+                                    >
+                                        {character}
+                                    </span>
+                                ))
+                            }
+                        </h1>
+                        <p
+                            class="text-muted dark:text-muted-dark mt-8 max-w-2xl text-lg leading-8 sm:text-xl"
+                        >
+                            I create thoughtful mobile applications and web experiences, with a
+                            focus on clarity, usefulness, and the details that make software feel
+                            good.
+                        </p>
+                        <div class="mt-9 flex flex-wrap gap-3">
+                            <Button href={routes.appsSection}>View my apps</Button>
+                        </div>
                     </div>
+                    <img
+                        src={`${routes.home}assets/memoji/greeting.png`}
+                        alt={`Greeting Memoji of ${siteConfig.author.fullName}`}
+                        width="259"
+                        height="280"
+                        class="w-full max-w-[384px] self-end object-contain xl:w-[384px] xl:shrink-0"
+                    />
                 </div>
             </div>
         </section>
