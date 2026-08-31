@@ -31,6 +31,16 @@ These instructions apply to the entire repository unless a more specific `AGENTS
 - Preserve sufficient contrast and honor `prefers-reduced-motion`.
 - Keep transitions subtle and avoid unnecessary large corner radii.
 
+## Performance standards
+
+- Keep pages static and ship no client-side JavaScript unless it provides essential interaction or prevents a visible rendering problem.
+- Put rendered raster images in `src/assets/` and import them through Astro's asset pipeline. Reserve `public/` for files that need stable, unprocessed URLs.
+- Use responsive image dimensions and modern formats with a fallback when images are material to the page. Do not ship source-resolution images when a smaller displayed size is sufficient.
+- Do not download media hidden at the current breakpoint. Mark above-the-fold, user-visible images as high priority; defer non-critical images.
+- Self-host and preload only the font files required by the site. Do not add render-blocking third-party font requests.
+- Preserve explicit image dimensions to prevent layout shift, and remove unused assets and client-side media-swapping code.
+- Keep production CSS and JavaScript lean; prefer semantic HTML, CSS, and Astro build-time rendering over browser runtime work.
+
 ## Content and SEO
 
 - Give each page a unique, descriptive title and meta description.
